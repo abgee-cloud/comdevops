@@ -1,0 +1,39 @@
+---
+// src/layouts/Layout.astro
+// ABG Department of Community Development
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { navItems } from '../data/navItems';
+
+const { title, description = "Official web portal of the ABG Department of Community Development, IS&CT Unit — Buka, Autonomous Region of Bougainville, Papua New Guinea." } = Astro.props;
+const siteTitle = "DCD | Autonomous Bougainville Government";
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ABG Department of Community Development — IS&CT Unit" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | ABG DCD</title>
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+  </head>
+  <body>
+    <Header siteTitle={siteTitle} navItems={navItems} currentPath={currentPath} />
+    <main>
+      <slot />
+    </main>
+    <Footer startYear={2024} />
+  </body>
+</html>

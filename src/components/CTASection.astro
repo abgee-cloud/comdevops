@@ -1,0 +1,126 @@
+---
+// src/components/CTASection.astro
+// ABG DCD — IS&CT Unit
+
+interface Props {
+  headline: string;
+  body?: string;
+  ctaText: string;
+  ctaHref: string;
+  ctaSecondaryText?: string;
+  ctaSecondaryHref?: string;
+}
+
+const {
+  headline,
+  body,
+  ctaText,
+  ctaHref,
+  ctaSecondaryText,
+  ctaSecondaryHref
+} = Astro.props;
+---
+<section class="cta-section" aria-label="Call to Action">
+  <div class="cta-inner">
+    <div class="cta-content">
+      <h2>{headline}</h2>
+      {body && <p>{body}</p>}
+    </div>
+    <div class="cta-actions">
+      <a href={ctaHref} class="cta-btn-primary">{ctaText}</a>
+      {ctaSecondaryText && ctaSecondaryHref && (
+        <a href={ctaSecondaryHref} class="cta-btn-secondary">{ctaSecondaryText}</a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+.cta-section {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  padding: var(--spacing-xxl) var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+.cta-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.cta-content h2 {
+  font-size: 1.7rem;
+  color: #ffffff;
+  margin-bottom: var(--spacing-xs);
+}
+
+.cta-content p {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.cta-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+  display: inline-block;
+  padding: 13px var(--spacing-xl);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: 700;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-size: 0.93rem;
+  transition: background-color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.cta-btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.cta-btn-secondary {
+  display: inline-block;
+  padding: 13px var(--spacing-xl);
+  background-color: transparent;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-size: 0.93rem;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.cta-btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .cta-inner { flex-direction: column; text-align: center; }
+  .cta-actions { justify-content: center; width: 100%; }
+  .cta-btn-primary, .cta-btn-secondary { width: 100%; max-width: 280px; text-align: center; }
+}
+</style>

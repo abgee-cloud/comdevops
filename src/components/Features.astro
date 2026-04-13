@@ -1,0 +1,105 @@
+---
+// src/components/Features.astro
+// ABG DCD — Programme Areas
+
+interface FeatureItem {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  features: FeatureItem[];
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+}
+
+const {
+  features,
+  sectionTitle = "Our Programme Areas",
+  sectionSubtitle = "The Department of Community Development delivers community-centred services across six core programme areas throughout Bougainville."
+} = Astro.props;
+---
+<section class="features-section" aria-label="Programme Areas">
+  <div class="container">
+    <div class="section-title">
+      <h2>{sectionTitle}</h2>
+      <p>{sectionSubtitle}</p>
+    </div>
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class="feature-card">
+          {feature.icon && <div class="feature-icon" aria-hidden="true">{feature.icon}</div>}
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.features-section {
+  padding: var(--section-padding-vertical) var(--section-padding-horizontal);
+  background-color: var(--color-background);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.feature-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-small);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background-color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(27,58,107,0.2);
+}
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-card p {
+  font-size: 0.93rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-card { padding: var(--spacing-lg) var(--spacing-md); }
+}
+</style>

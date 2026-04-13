@@ -1,0 +1,133 @@
+---
+// src/components/AboutSection.astro
+// ABG DCD — IS&CT Unit
+
+export interface Props {
+  headline: string;
+  content: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  reverse?: boolean;
+}
+
+const {
+  headline,
+  content,
+  imageUrl,
+  imageAlt = 'DCD community activity',
+  reverse = false
+} = Astro.props;
+---
+<section class:list={["about-section", { reverse }]}>
+  <div class="about-content">
+    <h2>{headline}</h2>
+    <div class="about-body" set:html={content} />
+  </div>
+  {imageUrl && (
+    <div class="about-image-wrapper">
+      <img src={imageUrl} alt={imageAlt} class="about-image" loading="lazy" />
+    </div>
+  )}
+  {!imageUrl && (
+    <div class="about-graphic">
+      <div class="abg-emblem">
+        <span class="emblem-text">ABG</span>
+        <span class="emblem-sub">DCD</span>
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+.about-section {
+  padding: var(--section-padding-vertical) var(--section-padding-horizontal);
+  background-color: var(--color-surface);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xxl);
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-section.reverse {
+  direction: rtl;
+}
+.about-section.reverse > * {
+  direction: ltr;
+}
+
+.about-content h2 {
+  font-size: var(--font-size-h2);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.about-content h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin-top: var(--spacing-sm);
+  border-radius: 2px;
+}
+
+.about-body {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.about-image-wrapper {
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+.about-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Graphic placeholder when no image */
+.about-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: var(--border-radius-large);
+  min-height: 280px;
+  box-shadow: var(--shadow-medium);
+}
+.abg-emblem {
+  text-align: center;
+}
+.emblem-text {
+  display: block;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--color-accent);
+  letter-spacing: 4px;
+  line-height: 1;
+}
+.emblem-sub {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 6px;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  .about-section.reverse { direction: ltr; }
+  .about-graphic { min-height: 200px; }
+}
+</style>

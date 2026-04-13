@@ -1,0 +1,48 @@
+---
+// src/pages/blog/index.astro
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="News & Updates">
+  <div class="page-hero">
+    <div class="container">
+      <p class="page-eyebrow">ABG Department of Community Development</p>
+      <h1>News &amp; Updates</h1>
+      <p class="page-lead">Latest announcements, publications, and updates from the DCD IS&amp;CT Unit.</p>
+    </div>
+  </div>
+  <div class="page-body container">
+    <p class="placeholder-notice">News articles will appear here. Add Markdown files to <code>src/content/blog/</code> to publish posts.</p>
+  </div>
+</Layout>
+
+<style>
+.page-hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  border-bottom: 3px solid var(--color-accent);
+}
+.page-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+.page-hero h1 { color: #ffffff; font-size: clamp(1.6rem, 4vw, 2.4rem); }
+.page-lead { color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 540px; margin: 0; }
+.page-body { padding: var(--spacing-xxl) var(--spacing-md); }
+.placeholder-notice {
+  color: var(--color-text-muted);
+  font-style: italic;
+  border-left: 4px solid var(--color-accent);
+  padding-left: var(--spacing-md);
+}
+code {
+  background: var(--color-border);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+</style>

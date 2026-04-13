@@ -1,0 +1,132 @@
+---
+// src/pages/about.astro
+// ABG DCD — About the Department
+
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="About DCD" description="Learn about the ABG Department of Community Development — our mandate, structure, and mission across Bougainville.">
+  <div class="page-hero">
+    <div class="container">
+      <p class="page-eyebrow">Autonomous Bougainville Government</p>
+      <h1>Department of Community Development</h1>
+      <p class="page-lead">Serving communities across Bougainville since the establishment of the Autonomous Bougainville Government.</p>
+    </div>
+  </div>
+
+  <div class="page-body container">
+
+    <section class="content-section">
+      <h2>Our Mandate</h2>
+      <p>The Department of Community Development (DCD) is a principal line department of the Autonomous Bougainville Government (ABG) mandated to coordinate and deliver community-centred social development services throughout the Autonomous Region of Bougainville (AROB).</p>
+      <p>Our mandate is grounded in the ABG's commitment to improving the quality of life for all Bougainvilleans — with particular attention to vulnerable populations including children, women, youth, persons with disabilities, and marginalised communities.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Our Mission</h2>
+      <p>To empower Bougainvillean communities through the delivery of integrated, rights-based social services, evidence-informed policy, and inclusive development programmes that promote community wellbeing, social justice, and human dignity.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Departmental Structure</h2>
+      <p>DCD operates through a network of divisional units and district-level offices across all 13 districts of Bougainville:</p>
+      <ul class="structured-list">
+        <li><strong>Child Protection Division</strong> — Safeguarding children's rights and wellbeing</li>
+        <li><strong>Women &amp; Gender Division</strong> — Gender equity, GBV response, and women's empowerment</li>
+        <li><strong>Youth Development Division</strong> — Youth programmes, vocational support, and leadership</li>
+        <li><strong>Community Empowerment Division</strong> — Village governance and community planning</li>
+        <li><strong>Social Welfare Division</strong> — Targeted support for vulnerable populations</li>
+        <li><strong>IS&amp;CT Unit</strong> — Information systems, digital infrastructure, and ICT capacity building</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>The IS&amp;CT Unit</h2>
+      <p>The Information Systems and Communications Technology (IS&amp;CT) Unit is embedded within DCD to drive the department's digital transformation agenda. The unit leads:</p>
+      <ul class="structured-list">
+        <li>Digital Public Infrastructure (DPI) design and deployment</li>
+        <li>Data governance and information management systems</li>
+        <li>ICT capacity building for DCD staff and partners</li>
+        <li>Development of monitoring, evaluation, and reporting platforms</li>
+        <li>Cybersecurity awareness and policy development</li>
+      </ul>
+      <p>The IS&amp;CT Unit is based in Buka, Bougainville, and operates in close coordination with the ABG Department of Personnel and Industrial Relations (DPIR) and development partners.</p>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+.page-hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.page-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.page-hero h1 {
+  color: #ffffff;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: var(--spacing-md);
+}
+
+.page-lead {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 620px;
+  margin: 0;
+}
+
+.page-body {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.content-section {
+  margin-bottom: var(--spacing-xxl);
+  max-width: 760px;
+}
+
+.content-section h2 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-accent);
+  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.content-section p {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--spacing-md);
+}
+
+.structured-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0;
+}
+.structured-list li {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-left: 3px solid var(--color-border);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  transition: border-color 0.2s;
+}
+.structured-list li:hover {
+  border-left-color: var(--color-accent);
+}
+.structured-list li strong {
+  color: var(--color-primary);
+}
+</style>
